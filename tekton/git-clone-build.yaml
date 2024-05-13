@@ -1,0 +1,31 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: install-git-clone-build
+spec:
+  workspaces:
+    - name: shared-data
+      description: "Workspace to store the cloned repo files"
+  steps:
+    - name: install-git
+      image: registry.redhat.io/ubi8/ubi-minimal
+      script: |
+        #!/bin/sh
+        microdnf install -y git
+        git --version
+    - name: git-clone
+      image: registry.redhat.io/ubi8/ubi-minimal
+      script: |
+        #!/bin/sh
+        git clone https://github.com/alanleberknight/nodejs-rest-http /workspace/shared-data
+    - name: build-repo
+      image: registry.redhat.io/ubi8/ubi-minimal
+      workingDir: /workspace/shared-data
+      script: |
+        #!/bin/sh
+        cd /workspace/shared-data
+        # Add build steps here (e.g., npm install, npm build, etc.)
+        echo "Building the cloned repo..."
+        # Example: npm install
+        # Example: npm run build
+

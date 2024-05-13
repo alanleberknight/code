@@ -1,0 +1,13 @@
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: install-git-on-ubi8
+spec:
+  steps:
+    - name: install-git
+      image: registry.redhat.io/ubi8/ubi-minimal
+      script: |
+        #!/bin/sh
+        microdnf install -y git
+        git --version
+
