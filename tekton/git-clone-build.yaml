@@ -17,7 +17,7 @@ spec:
       image: registry.redhat.io/ubi8/ubi-minimal
       script: |
         #!/bin/sh
-        git clone https://github.com/alanleberknight/nodejs-rest-http /workspace/shared-data
+        git clone https://github.com/alanleberknight/code/java /workspace/shared-data
     - name: build-repo
       image: registry.redhat.io/ubi8/ubi-minimal
       workingDir: /workspace/shared-data
