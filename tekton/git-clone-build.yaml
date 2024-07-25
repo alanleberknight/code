@@ -5,7 +5,7 @@ metadata:
 spec:
   workspaces:
     - name: shared-data
-      description: "Workspace to store the cloned repo files"
+      description: "Workspace to store the awesome cloned repo files"
   steps:
     - name: install-git
       image: registry.redhat.io/ubi8/ubi-minimal
